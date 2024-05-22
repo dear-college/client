@@ -4,7 +4,10 @@
 
 ### login()
 
-Check to see if `document.location` has a URL fragment ("hash") which is a valid JWT.  (We cannot verify the claims in the JWT, but we can check that it is a compactly encoded JWT.)  If so, store the JWT in localStorage.
+Check to see if `document.location` has a URL fragment ("hash") which
+is a valid JWT.  (We cannot verify the claims in the JWT, but we can
+check that it is a compactly encoded JWT.)  If so, store the JWT in
+localStorage.
 
 This can be added to the event handler for `DOMContentLoaded`.
 
@@ -24,4 +27,9 @@ Update the current user's "score" on the assignment associated with `location`.
 
 ### getState( location = document.location )
 
+Fetch the current user's "page state" on the assignment associated with `location`.
+
 ### putState( state = { }, location = document.location )
+
+Update the current user's "page state" on the assignment associated
+with `location`.  This includes the calculation of a JSON-Work-Proof.
