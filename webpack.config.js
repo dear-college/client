@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const fs = require('fs');
 
 module.exports = {
-  mode: 'development',
-  // mode: 'production',
+  // mode: 'development',
+  mode: 'production',
   entry: {
     main: './src/index.js'
   },
@@ -23,7 +23,15 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ['@babel/preset-env', { modules: false }] 
+            ]
+          }
+        },
+        exclude: /node_modules/,
       },
     ]
   },

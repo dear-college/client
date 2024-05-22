@@ -1,5 +1,9 @@
 # @dear.college/client
 
+You can see a demo by visiting
+
+https://dear.college/courses/sample/https://dear-college.github.io/client/demo/
+
 ## How to use this library
 
 ### login()
