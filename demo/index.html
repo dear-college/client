@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@dear.college/client demo</title>
+    <script src="//unpkg.com/@dear.college/client"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', async function() {
+        let dc = window.client;
+        await dc.login();
+
+        const getProgressBtn = document.getElementById('getProgressBtn');
+        const putProgressBtn = document.getElementById('putProgressBtn');
+        const getStateBtn = document.getElementById('getStateBtn');
+        const putStateBtn = document.getElementById('putStateBtn');
+        const progressInput = document.getElementById('progressInput');
+        const stateInput = document.getElementById('stateInput');
+
+        getProgressBtn.addEventListener('click', async () => {
+          var progress = await dc.getProgress();
+          console.log("Progress:", progress);
+          progressInput.value = JSON.stringify(progress);
+        });
+
+        putProgressBtn.addEventListener('click', async () => {
+          const newProgress = JSON.parse(progressInput.value);
+          await dc.putProgress(newProgress);
+          console.log("Progress updated:", newProgress);
+        });
+
+        getStateBtn.addEventListener('click', async () => {
+          var state = await dc.getState();
+          console.log("State:", state);
+          stateInput.value = JSON.stringify(state);
+        });
+
+        putStateBtn.addEventListener('click', async () => {
+	  console.log(stateInput.value);
+          const newState = JSON.parse(stateInput.value);
+          await dc.putState(newState);
+          console.log("State updated:", newState);
+        });
+      });
+    </script>
+</head>
+<body>
+    <h1>@dear.college/client demo</h1>
+    <div>
+        <label for="progressInput">Progress:</label>
+        <input type="text" id="progressInput" />
+        <button id="getProgressBtn">Get Progress</button>
+        <button id="putProgressBtn">Set Progress</button>
+    </div>
+    <div>
+        <label for="stateInput">State:</label>
+        <input type="text" id="stateInput" />
+        <button id="getStateBtn">Get State</button>
+        <button id="putStateBtn">Set State</button>
+    </div>
+</body>
+</html>
